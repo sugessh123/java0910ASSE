@@ -1,0 +1,52 @@
+Environment: Java 21.0.12.1 (OpenJDK 64-Bit Server VM), Linux amd64, 2 CPU(s), max heap 3959 MB
+
+=== T1: cases where the buggy HashSet APPEARS to work ===
+  T1a  5 scans, 5 different students (junior class)                   predicted=5      observed=5      MATCH
+  T1b  same object re-scanned 3 times (junior class)                  predicted=5      observed=5      MATCH
+
+=== T2: scans designed to expose duplicates ===
+  T2   6 scans, 4 distinct regNo (junior class, correct = 4)          predicted=6      observed=6      MATCH
+  T2b  same 6 scans with hashCode() on regNo (fixed class)            predicted=4      observed=4      MATCH
+  T2c  trials (of 1000) where ALL duplicates survived                 predicted=1000   observed=1000   MATCH
+       contents of the junior set: [192311004 s4, 192311002 s5, 192311003 s2, 192311002 s1, 192311001 s0, 192311001 s3]
+
+=== T3: additional tests of my own ===
+  T3a  size after mutating regNo                                      predicted=1      observed=1      MATCH
+  T3a  contains(the same object)                                      predicted=false  observed=false  MATCH
+  T3a  contains(new Student with the ORIGINAL regNo)                  predicted=false  observed=false  MATCH
+  T3a  remove(the same object)                                        predicted=false  observed=false  MATCH
+       iterating still shows the ghost entry: [192399999 Arun]
+  T3b  TreeSet size, two students with same name (equals: different)  predicted=1      observed=1      MATCH
+  T3b  HashSet size, same two students                                predicted=2      observed=2      MATCH
+  T3c  same regNo, different name spelling, hash on (regNo,name)      predicted=2      observed=2      MATCH
+
+=== T5: mechanism - how often does HashSet call hashCode() and equals()? ===
+  T5   add NEW student: hashCode() calls                              predicted=1      observed=1      MATCH
+  T5   add NEW student: equals() calls                                predicted=0      observed=0      MATCH
+  T5   add DUPLICATE: hashCode() calls                                predicted=1      observed=1      MATCH
+  T5   add DUPLICATE: equals() calls                                  predicted=1      observed=1      MATCH
+  T5   set size after duplicate add                                   predicted=1      observed=1      MATCH
+  T6   corrected class satisfies equals/hashCode contract checks      predicted=true   observed=true   MATCH
+
+=== T4: constant hashCode() = 1 (legal but slow): time to add n distinct students ===
+       n     good hash (ms) constant hash (ms)  slow-down
+    1000              0.072              2.596        36x
+    2000              0.115              8.733        76x
+    5000              0.229             68.418       299x
+   10000              0.507            411.034       811x
+   20000              1.007           3133.088      3111x
+
+=== ALTERNATIVE: de-duplication structures. Each of n unique students is scanned twice ===
+ n unique | structure                 ns / scan compare/equals per scan   bytes / unique
+    10000 | HashSet<Student>                  24.7   ~1 hashCode + <=1 equals               38.6
+    10000 | TreeSet<Student>+Comparator      150.9   17.0 compare() (log2 n = 13.3)         40.0
+    10000 | HashMap<String,Student>           21.2   ~1 hashCode + <=1 equals               38.6
+   100000 | HashSet<Student>                  39.2   ~1 hashCode + <=1 equals               42.5
+   100000 | TreeSet<Student>+Comparator      225.1   21.9 compare() (log2 n = 16.6)         40.0
+   100000 | HashMap<String,Student>           35.3   ~1 hashCode + <=1 equals               42.5
+  1000000 | HashSet<Student>                  34.5   ~1 hashCode + <=1 equals               40.4
+  1000000 | TreeSet<Student>+Comparator      253.3   26.9 compare() (log2 n = 19.9)         40.0
+  1000000 | HashMap<String,Student>           25.1   ~1 hashCode + <=1 equals               40.4
+
+18 of 18 predictions matched the observation.
+(sink=34546000)

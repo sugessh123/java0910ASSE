@@ -1,0 +1,5 @@
+structure,bytes_per_element
+ArrayList,4.850
+LinkedList,23.988
+ArrayDeque,4.939
+PlainArray,3.988

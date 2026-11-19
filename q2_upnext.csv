@@ -1,0 +1,10 @@
+structure,n,ns_per_op
+ArrayList,1000,28.720
+ArrayList,10000,158.124
+ArrayList,100000,4738.294
+LinkedList,1000,11.371
+LinkedList,10000,5.480
+LinkedList,100000,5.239
+ArrayDeque,1000,9.706
+ArrayDeque,10000,4.744
+ArrayDeque,100000,4.718

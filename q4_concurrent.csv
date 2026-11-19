@@ -1,0 +1,4 @@
+structure,ms_single_thread,ms_two_threads
+Hashtable,74.334,356.396
+HashMap (read-only),56.085,45.580
+ConcurrentHashMap,138.020,82.886

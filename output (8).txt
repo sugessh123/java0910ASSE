@@ -1,0 +1,64 @@
+Environment: Java 21.0.12.1 (OpenJDK 64-Bit Server VM), Linux amd64, 2 CPU(s), max heap 3959 MB
+
+--- add_end : nanoseconds per operation (median of 9 runs) ---
+structure             1000         10000        100000
+ArrayList              8.0           3.6           2.8
+LinkedList             5.7           7.5           8.2
+ArrayDeque             5.1           4.5           3.7
+PlainArray             3.3           4.1           4.0
+
+--- insert_front : nanoseconds per operation (median of 9 runs) ---
+structure             1000         10000        100000
+ArrayList             88.1         292.7        7504.9
+LinkedList            22.2          21.3          17.1
+ArrayDeque            22.7          15.5           5.8
+PlainArray           526.8        3530.3       35140.3
+
+--- remove_front : nanoseconds per operation (median of 9 runs) ---
+structure             1000         10000        100000
+ArrayList             45.8         251.2        7463.6
+LinkedList            60.5           7.7          34.6
+ArrayDeque            59.9          17.5           6.3
+PlainArray           206.1        3549.2       34389.6
+
+--- insert_middle : nanoseconds per operation (median of 9 runs) ---
+structure             1000         10000        100000
+ArrayList             33.2         135.7        3755.7
+LinkedList           938.1        6944.0       66129.0
+ArrayDeque             n/a           n/a           n/a
+PlainArray           248.6        1935.2       17664.8
+
+--- remove_middle : nanoseconds per operation (median of 9 runs) ---
+structure             1000         10000        100000
+ArrayList             43.4         142.2        3758.0
+LinkedList           270.8        6236.3       67087.8
+ArrayDeque             n/a           n/a           n/a
+PlainArray            98.4        1350.9       14885.1
+
+--- get_kth : nanoseconds per operation (median of 9 runs) ---
+structure             1000         10000        100000
+ArrayList              1.0           0.8           3.9
+LinkedList           276.9        3241.8       39449.5
+ArrayDeque             n/a           n/a           n/a
+PlainArray             1.0           0.7           2.4
+
+--- iterate : nanoseconds per operation (median of 9 runs) ---
+structure             1000         10000        100000
+ArrayList              0.3           0.5           0.9
+LinkedList             1.5           1.6           2.7
+ArrayDeque             0.7           0.7           1.0
+PlainArray             0.3           0.3           0.8
+
+--- UP NEXT queue: 100 000 mixed ops (35% addLast, 15% addFirst, 50% removeFirst) : ns per op ---
+structure             1000         10000        100000
+ArrayList             28.7         158.1        4738.3
+LinkedList            11.4           5.5           5.2
+ArrayDeque             9.7           4.7           4.7
+
+--- Space: retained bytes per element, 1 000 000 elements (median of 7, after GC) ---
+ArrayList       4.8 bytes/element
+LinkedList     24.0 bytes/element
+ArrayDeque      4.9 bytes/element
+PlainArray      4.0 bytes/element
+
+(sink=8149211139131)

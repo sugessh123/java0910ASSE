@@ -1,0 +1,13 @@
+n,structure,ns_per_insert
+1000,HashMap,61.270
+1000,TreeMap,204.680
+1000,SortedArray,260.915
+10000,HashMap,85.801
+10000,TreeMap,213.084
+10000,SortedArray,317.047
+100000,HashMap,138.779
+100000,TreeMap,227.089
+100000,SortedArray,271.409
+1000000,HashMap,126.728
+1000000,TreeMap,268.126
+1000000,SortedArray,1094.800

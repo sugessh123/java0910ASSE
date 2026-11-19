@@ -1,0 +1,10 @@
+experiment,variant,value,unit
+A,StringBuilder_lost_data_trials,31,of 40
+A,StringBuilder_exception_trials,6,of 40
+A,StringBuffer_lost_data_trials,0,of 40
+B,StringBuffer_5_calls_torn_lines,75468,of 200000
+B,StringBuffer_1_call_torn_lines,0,of 200000
+C,shared StringBuffer,169.423,ms_median
+C,shared StringBuilder + lock,168.518,ms_median
+C,per-thread StringBuilder + merge,12.927,ms_median
+C,ConcurrentLinkedQueue<String>,62.210,ms_median

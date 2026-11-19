@@ -1,0 +1,11 @@
+structure,bytes_per_entry
+HashMap@100000,42.486
+LinkedHashMap@100000,50.487
+TreeMap@100000,40.000
+Hashtable@100000,37.334
+SortedArray@100000,4.000
+HashMap@1000000,40.389
+LinkedHashMap@1000000,48.389
+TreeMap@1000000,40.000
+Hashtable@1000000,37.333
+SortedArray@1000000,4.000

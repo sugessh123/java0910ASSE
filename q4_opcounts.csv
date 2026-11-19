@@ -1,0 +1,17 @@
+n,structure,operation,per_lookup,log2_n
+1000,TreeMap,compare_calls,9.239,9.966
+1000,SortedArray,compare_calls,8.981,9.966
+1000,HashMap,equals_calls,1.000,9.966
+1000,HashMap,hashCode_calls,1.000,9.966
+10000,TreeMap,compare_calls,12.642,13.288
+10000,SortedArray,compare_calls,12.363,13.288
+10000,HashMap,equals_calls,1.000,13.288
+10000,HashMap,hashCode_calls,1.000,13.288
+100000,TreeMap,compare_calls,16.000,16.610
+100000,SortedArray,compare_calls,15.692,16.610
+100000,HashMap,equals_calls,1.000,16.610
+100000,HashMap,hashCode_calls,1.000,16.610
+1000000,TreeMap,compare_calls,19.457,19.932
+1000000,SortedArray,compare_calls,18.956,19.932
+1000000,HashMap,equals_calls,1.000,19.932
+1000000,HashMap,hashCode_calls,1.000,19.932

@@ -1,0 +1,96 @@
+Environment: Java 21.0.12.1 (OpenJDK 64-Bit Server VM), Linux amd64, 2 CPU(s), max heap 4949 MB
+
+################  n = 1,000 medicines  ################
+structure            ns/put    ns/lookup 100k lookups ms     p50 ns     p99 ns   p99.9 ns
+HashMap               134.7          8.0           0.80       28.7       53.7     1089.1
+TreeMap               823.7        109.9          10.99      111.4      238.4     1077.2
+LinkedHashMap         350.6         10.4           1.04       14.3       17.5      501.1
+Hashtable             212.6         18.5           1.85       21.1       24.0      177.1
+SortedArray           371.3        115.7          11.57   (build = clone + sort)
+
+  Reports (ms)   structure      code-order report          insertion-order report    
+                 HashMap            0.41 (plain order OK? false)      0.24 (plain order OK? false)
+                 TreeMap            0.06 (plain order OK? true )      0.18 (plain order OK? false)
+                 LinkedHashMap      0.30 (plain order OK? false)      0.03 (plain order OK? true )
+                 Hashtable          0.11 (plain order OK? false)      0.18 (plain order OK? false)
+
+  Insert 1000 NEW medicines (ns/insert): HashMap 61 | TreeMap 205 | SortedArray 261
+
+################  n = 10,000 medicines  ################
+structure            ns/put    ns/lookup 100k lookups ms     p50 ns     p99 ns   p99.9 ns
+HashMap                71.8         15.4           1.54       14.9       47.1      491.6
+TreeMap               289.8        282.6          28.26      255.1      773.7     1399.5
+LinkedHashMap          73.0         45.2           4.52       29.3      151.5     1354.2
+Hashtable              86.8         24.8           2.48       31.0       84.7      724.8
+SortedArray           614.3        279.7          27.97   (build = clone + sort)
+
+  Reports (ms)   structure      code-order report          insertion-order report    
+                 HashMap            2.48 (plain order OK? false)      2.44 (plain order OK? false)
+                 TreeMap            0.50 (plain order OK? true )      2.29 (plain order OK? false)
+                 LinkedHashMap      2.90 (plain order OK? false)      0.04 (plain order OK? true )
+                 Hashtable          1.71 (plain order OK? false)      4.09 (plain order OK? false)
+
+  Insert 1000 NEW medicines (ns/insert): HashMap 86 | TreeMap 213 | SortedArray 317
+
+################  n = 100,000 medicines  ################
+structure            ns/put    ns/lookup 100k lookups ms     p50 ns     p99 ns   p99.9 ns
+HashMap               219.0         58.5           5.85       84.0      408.6     1087.9
+TreeMap              1081.9       1111.6         111.16     1074.7     1934.5     2875.6
+LinkedHashMap         198.1         43.6           4.36       48.7       98.0      654.8
+Hashtable             130.1         61.6           6.16       62.4      117.4      620.2
+SortedArray           730.0        884.4          88.44   (build = clone + sort)
+
+  Reports (ms)   structure      code-order report          insertion-order report    
+                 HashMap           10.92 (plain order OK? false)     17.21 (plain order OK? false)
+                 TreeMap            1.19 (plain order OK? true )     17.45 (plain order OK? false)
+                 LinkedHashMap     44.63 (plain order OK? false)      3.39 (plain order OK? true )
+                 Hashtable          7.00 (plain order OK? false)     15.76 (plain order OK? false)
+
+  Insert 1000 NEW medicines (ns/insert): HashMap 139 | TreeMap 227 | SortedArray 271
+
+################  n = 1,000,000 medicines  ################
+structure            ns/put    ns/lookup 100k lookups ms     p50 ns     p99 ns   p99.9 ns
+HashMap               142.4         39.7           3.97       37.6       43.8      571.6
+TreeMap              1850.2       2461.9         246.19     1758.1     2440.9     2591.4
+LinkedHashMap         129.6         71.7           7.17       68.0       87.1      756.9
+Hashtable             117.3         99.0           9.90       88.9      112.7      883.1
+SortedArray          1164.9       2947.4         294.74   (build = clone + sort)
+
+  Reports (ms)   structure      code-order report          insertion-order report    
+                 HashMap          402.03 (plain order OK? false)    454.53 (plain order OK? false)
+                 TreeMap           45.48 (plain order OK? true )    496.27 (plain order OK? false)
+                 LinkedHashMap   1104.77 (plain order OK? false)    210.00 (plain order OK? true )
+                 Hashtable        280.29 (plain order OK? false)    370.86 (plain order OK? false)
+
+  Insert 1000 NEW medicines (ns/insert): HashMap 127 | TreeMap 268 | SortedArray 1095
+
+=== Operation counts per successful lookup ===
+n=     1000  TreeMap compare()=  9.2   binarySearch compare()=  9.0   HashMap equals()=1.00 hashCode()=1.00   (log2 n = 10.0)
+n=    10000  TreeMap compare()= 12.6   binarySearch compare()= 12.4   HashMap equals()=1.00 hashCode()=1.00   (log2 n = 13.3)
+n=   100000  TreeMap compare()= 16.0   binarySearch compare()= 15.7   HashMap equals()=1.00 hashCode()=1.00   (log2 n = 16.6)
+n=  1000000  TreeMap compare()= 19.5   binarySearch compare()= 19.0   HashMap equals()=1.00 hashCode()=1.00   (log2 n = 19.9)
+
+=== HashMap lookup: same hot key vs random keys (ns per lookup) ===
+n=     1000  hot key    2.3 ns   random keys    8.2 ns   ratio 3.6x
+n=    10000  hot key    1.6 ns   random keys   11.0 ns   ratio 7.0x
+n=   100000  hot key    1.7 ns   random keys   19.3 ns   ratio 11.2x
+n=  1000000  hot key    1.5 ns   random keys   60.3 ns   ratio 38.9x
+
+=== 2 reader threads x 2 000 000 lookups each, n = 100 000 (ms, median of 7) ===
+Hashtable              1 thread     74.3 ms    2 threads (each does the full 2,000,000 lookups)    356.4 ms
+HashMap (read-only)    1 thread     56.1 ms    2 threads (each does the full 2,000,000 lookups)     45.6 ms
+ConcurrentHashMap      1 thread    138.0 ms    2 threads (each does the full 2,000,000 lookups)     82.9 ms
+
+=== Container overhead per entry (exact allocated bytes; Medicine and String objects excluded) ===
+n=   100000  HashMap          42.5 bytes/entry
+n=   100000  LinkedHashMap    50.5 bytes/entry
+n=   100000  TreeMap          40.0 bytes/entry
+n=   100000  Hashtable        37.3 bytes/entry
+n=   100000  SortedArray       4.0 bytes/entry
+n=  1000000  HashMap          40.4 bytes/entry
+n=  1000000  LinkedHashMap    48.4 bytes/entry
+n=  1000000  TreeMap          40.0 bytes/entry
+n=  1000000  Hashtable        37.3 bytes/entry
+n=  1000000  SortedArray       4.0 bytes/entry
+
+(sink=45515496815)

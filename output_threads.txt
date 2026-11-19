@@ -1,0 +1,17 @@
+Environment: Java 21.0.12.1 (OpenJDK 64-Bit Server VM), Linux amd64, 2 CPU(s), max heap 2969 MB
+
+[A] Shared StringBuilder, 4 threads x 50000 appends, 40 trials:
+    trials with LOST data      : 31 / 40
+    trials that THREW exception: 6 / 40
+    trials fully correct       : 3 / 40
+[A] Shared StringBuffer, same test: trials with lost data = 0 / 40
+
+[B] StringBuffer log, 200000 entries written by 4 threads:
+    entry appended with 5 separate append() calls -> torn/garbled lines: 75468
+    entry built locally, appended in ONE call       -> torn/garbled lines: 0
+
+[C] Cost with 4 threads x 200000 entries (median of 7 runs, ms):
+    shared StringBuffer                  median    169.4 ms   sd   42.2 ms
+    shared StringBuilder + lock          median    168.5 ms   sd   36.4 ms
+    per-thread StringBuilder + merge     median     12.9 ms   sd    4.2 ms
+    ConcurrentLinkedQueue<String>        median     62.2 ms   sd   31.2 ms

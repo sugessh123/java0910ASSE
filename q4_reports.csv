@@ -1,0 +1,65 @@
+n,structure,report,approach,ms,order_matches_requirement
+1000,HashMap,code-order,copy keys + sort,0.412,true
+1000,HashMap,code-order,plain iteration only,,false
+1000,HashMap,insertion-order,copy values + sort by seq,0.241,true
+1000,HashMap,insertion-order,plain iteration only,,false
+1000,TreeMap,code-order,plain iteration,0.058,true
+1000,TreeMap,code-order,plain iteration only,,true
+1000,TreeMap,insertion-order,copy values + sort by seq,0.185,true
+1000,TreeMap,insertion-order,plain iteration only,,false
+1000,LinkedHashMap,code-order,copy keys + sort,0.304,true
+1000,LinkedHashMap,code-order,plain iteration only,,false
+1000,LinkedHashMap,insertion-order,plain iteration,0.033,true
+1000,LinkedHashMap,insertion-order,plain iteration only,,true
+1000,Hashtable,code-order,copy keys + sort,0.114,true
+1000,Hashtable,code-order,plain iteration only,,false
+1000,Hashtable,insertion-order,copy values + sort by seq,0.178,true
+1000,Hashtable,insertion-order,plain iteration only,,false
+10000,HashMap,code-order,copy keys + sort,2.480,true
+10000,HashMap,code-order,plain iteration only,,false
+10000,HashMap,insertion-order,copy values + sort by seq,2.441,true
+10000,HashMap,insertion-order,plain iteration only,,false
+10000,TreeMap,code-order,plain iteration,0.495,true
+10000,TreeMap,code-order,plain iteration only,,true
+10000,TreeMap,insertion-order,copy values + sort by seq,2.288,true
+10000,TreeMap,insertion-order,plain iteration only,,false
+10000,LinkedHashMap,code-order,copy keys + sort,2.904,true
+10000,LinkedHashMap,code-order,plain iteration only,,false
+10000,LinkedHashMap,insertion-order,plain iteration,0.036,true
+10000,LinkedHashMap,insertion-order,plain iteration only,,true
+10000,Hashtable,code-order,copy keys + sort,1.708,true
+10000,Hashtable,code-order,plain iteration only,,false
+10000,Hashtable,insertion-order,copy values + sort by seq,4.086,true
+10000,Hashtable,insertion-order,plain iteration only,,false
+100000,HashMap,code-order,copy keys + sort,10.922,true
+100000,HashMap,code-order,plain iteration only,,false
+100000,HashMap,insertion-order,copy values + sort by seq,17.209,true
+100000,HashMap,insertion-order,plain iteration only,,false
+100000,TreeMap,code-order,plain iteration,1.191,true
+100000,TreeMap,code-order,plain iteration only,,true
+100000,TreeMap,insertion-order,copy values + sort by seq,17.451,true
+100000,TreeMap,insertion-order,plain iteration only,,false
+100000,LinkedHashMap,code-order,copy keys + sort,44.631,true
+100000,LinkedHashMap,code-order,plain iteration only,,false
+100000,LinkedHashMap,insertion-order,plain iteration,3.388,true
+100000,LinkedHashMap,insertion-order,plain iteration only,,true
+100000,Hashtable,code-order,copy keys + sort,7.002,true
+100000,Hashtable,code-order,plain iteration only,,false
+100000,Hashtable,insertion-order,copy values + sort by seq,15.755,true
+100000,Hashtable,insertion-order,plain iteration only,,false
+1000000,HashMap,code-order,copy keys + sort,402.032,true
+1000000,HashMap,code-order,plain iteration only,,false
+1000000,HashMap,insertion-order,copy values + sort by seq,454.528,true
+1000000,HashMap,insertion-order,plain iteration only,,false
+1000000,TreeMap,code-order,plain iteration,45.483,true
+1000000,TreeMap,code-order,plain iteration only,,true
+1000000,TreeMap,insertion-order,copy values + sort by seq,496.273,true
+1000000,TreeMap,insertion-order,plain iteration only,,false
+1000000,LinkedHashMap,code-order,copy keys + sort,1104.774,true
+1000000,LinkedHashMap,code-order,plain iteration only,,false
+1000000,LinkedHashMap,insertion-order,plain iteration,210.004,true
+1000000,LinkedHashMap,insertion-order,plain iteration only,,true
+1000000,Hashtable,code-order,copy keys + sort,280.289,true
+1000000,Hashtable,code-order,plain iteration only,,false
+1000000,Hashtable,insertion-order,copy values + sort by seq,370.862,true
+1000000,Hashtable,insertion-order,plain iteration only,,false
